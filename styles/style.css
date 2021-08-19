@@ -1,3 +1,107 @@
 html {
-    
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 100%;
+    margin: 100px;
+}
+
+.gameContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px;
+    font-size: 70px;
+    font-family: 'Style Script', cursive;
+}
+
+.roundsContainer {
+    display: flex;
+    justify-content: center;
+}
+    h2 {
+        text-align: center;
+        font-size: inherit;
+        margin: 0;
+        font-size: 25px;
+    }
+
+    #round {
+      padding-left: 10px;  
+    }
+
+.icons-container {
+    display: flex;
+    justify-content: center;
+}
+
+    .icon-group {
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+    }
+        p {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+    .icon {
+        height: 100px;
+        width: 100px;
+        border: 8px solid black;
+        border-radius: 15px;
+        padding: 15px;
+        transition: all .1s ease;
+        margin-bottom: 10px;
+        -webkit-user-drag: none;
+    }
+    .icon-small {
+        height: 60px;
+        width: 60px;
+        border: 6px solid black;
+        border-radius: 15px;
+        padding: 15px;
+        transition: all .1s ease;
+        margin-bottom: 10px;
+        -webkit-user-drag: none;
+    }
+
+    .hidden {
+        visibility: hidden;
+    }
+
+    button {
+        border: none;
+        background-color: inherit;
+        cursor: pointer;
+    }
+
+.selected {
+    background-color: cadetblue;
+}
+
+.scores-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.score-group {
+    display: flex;
+    margin: 10px 50px;
+}
+
+.score {
+    padding-left: 10px;  
 }

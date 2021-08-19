@@ -16,12 +16,59 @@
 
 
   <link rel="icon" href="images/favicon-32x32.png">
-  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="./styles/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet"> 
 
 </head>
 
 <body>
-  <h1>Welcome to Scissors, Paper, Rock</h1>
+  <div class="gameContainer">
+    <h1>Welcome to Scissors, Paper, Rock</h1>
+    <div class="roundsContainer">
+      <h2>Round: </h2>
+      <h2 id="round">1</h2>
+    </div>
+    
+    <div class="icons-container">
+      <div class="icon-group">
+        <button><img id="scissors" class="icon" src="images/scissors.png"></button>
+        <p>Scissors</p>
+      </div>
+      <div class="icon-group">
+        <button><img id="paper" class="icon" src="images/paper.png"></button>
+        <p>Paper</p>
+      </div>
+      <div class="icon-group">
+        <button><img id="rock" class="icon" src="images/rock.png"></button>
+        <p>Rock</p>
+      </div>
+    </div>
+
+    <div class="scores-container">
+      <div class="score-group">
+        <h2>Player Score:</h2>
+        <h2 class="score" id="player-score">0</h2>
+      </div>
+      <div class="score-group">
+        <h2>Computer Score:</h2>
+        <h2 class="score" id="computer-score">0</h2>
+      </div>
+    </div>
+    <h2 id="round-result">Good Luck!</h2>
+
+    <div class="icons-container">
+      <div class="icon-group">
+        <button><img id="start-game" class="icon-small" src="images/start.png"></button>
+        <p>Play</p>
+      </div>
+      <div class="icon-group">
+        <button><img id="restart" class="icon-small" src="images/replay.png"></button>
+        <p>Restart</p>
+      </div>
+  </div>
   <script src="js/scripts.js"></script>
 </body>
 </html>
