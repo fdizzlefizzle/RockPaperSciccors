@@ -5,21 +5,31 @@ const playerScore = document.getElementById("player-score")
 const computerScore = document.getElementById("computer-score")
 const roundResult = document.getElementById("round-result")
 const startGame = document.getElementById("start-game")
+const restart = document.getElementById("restart")
+const gameResult = document.getElementById("game-result")
+const playAgain = document.getElementById("play-again")
 
 startGame.addEventListener("click", beginGame, false);
 startGame.setAttribute('draggable', false);
+restart.addEventListener("click", resetGame, true);
+restart.setAttribute('draggable', false);
 
 function beginGame() {
     resetGame()
-    playerScore.innerText = `${playerTotal}`;
-    computerScore.innerText = `${computerTotal}`; 
-    round.innerText = `${turn}`
+    document.getElementById("startScreen").style.width = "0%";
 } 
 
 function resetGame() {
     playerTotal = 0;
     computerTotal = 0;
     turn = 1;
+    playerScore.innerText = `${playerTotal}`;
+    computerScore.innerText = `${computerTotal}`; 
+    round.innerText = `${turn}`
+    for (i = 0; i < icons.length; i++) {
+        icons[i].addEventListener('click', getPlayerSelection, false);
+        icons[i].setAttribute('draggable', false)
+    }
 }
 
 function getPlayerSelection() {
@@ -27,11 +37,6 @@ function getPlayerSelection() {
     this.classList.add("selected")
     this.addEventListener('transitionend', removeTransition => this.classList.remove("selected"))
     playRound(playerSelection)
-}
-
-for (i = 0; i < icons.length; i++) {
-    icons[i].addEventListener('click', getPlayerSelection, false);
-    icons[i].setAttribute('draggable', false)
 }
 
 function getComputerChoice(choices) {
@@ -49,7 +54,14 @@ function roundLose() {
     computerScore.innerText = computerTotal;
 }
 
-
+function checkWinner() {
+    if (playerTotal === 5 || computerTotal === 5) {
+        for (i = 0; i < icons.length; i++) {
+            icons[i].removeEventListener('click', getPlayerSelection, false);
+        }
+        return true
+    }
+}
 
 function playRound(playerSelection) {
     computerSelection = getComputerChoice(choices)
@@ -61,22 +73,18 @@ function playRound(playerSelection) {
         (playerSelection === "rock" && computerSelection === "scissors")
     ) {
         roundWin();
-        roundResult.innerText = `You WIN! ${playerSelection} beats ${computerSelection}`
+        roundResult.innerText = `You win this round! ${playerSelection} beats ${computerSelection}`
     } else {
         roundLose();
-        roundResult.innerText = `You Lose! ${computerSelection} beats ${playerSelection}`;
+        roundResult.innerText = `You lose this round! ${computerSelection} beats ${playerSelection}`;
     }
-}
+    
+    //activate overlay and announce winner
 
-
-function game() {
-    resetGame()
-    turn = turn + 1
-    console.log(turn)
-    round.innerText = `${turn}`;
-    playRound(playerSelection);
-    (playerTotal === computerTotal) ?
-        (console.log(`After ${turn} rounds, the game has ended in a draw! YOU DUMB BITCH`)):
-        (playerTotal > computerTotal) ?
-        (console.log(`After ${turn} rounds, YOU ARE THE WINNER YOU DUMB BITCH!!`)) : (console.log(`After ${turn} rounds, YOU FUCKING LOST YOU DUMB BITCH`))
+    if (checkWinner()) {
+        document.getElementById("startScreen").style.width = "100%";
+        (playerTotal > computerTotal) ? gameResult.innerText = "YOU WON!!": gameResult.innerText = "YOU LOSE!!";
+        playAgain.innerText = "Play Again?"
+        
+    }
 }

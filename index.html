@@ -25,6 +25,16 @@
 </head>
 
 <body>
+  <div id="startScreen" class="overlay">
+    <div class="overlay-content">
+      <h1>Welcome to Scissors, Paper, Rock</h1>
+      <div class="icon-group">
+        <button><img id="start-game" class="icon-small white" src="images/start.png"></button>
+        <p id="play-again">Play</p>
+      </div>
+      <h2 id="game-result"></h2>
+    </div>
+  </div>
   <div class="gameContainer">
     <h1>Welcome to Scissors, Paper, Rock</h1>
     <div class="roundsContainer">
@@ -58,16 +68,12 @@
       </div>
     </div>
     <h2 id="round-result">Good Luck!</h2>
-
     <div class="icons-container">
-      <div class="icon-group">
-        <button><img id="start-game" class="icon-small" src="images/start.png"></button>
-        <p>Play</p>
-      </div>
       <div class="icon-group">
         <button><img id="restart" class="icon-small" src="images/replay.png"></button>
         <p>Restart</p>
       </div>
+    </div>
   </div>
   <script src="js/scripts.js"></script>
 </body>
